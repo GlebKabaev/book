@@ -4,7 +4,7 @@ import com.example.book.dto.ShortClientDto;
 import com.example.book.entity.Client;
 import com.example.book.dto.ClientDto;
 import com.example.book.repository.ClientRepository;
-import com.example.book.validation.ClientValidationService;
+import com.example.book.validation.ClientValidatorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ClientService {
     private final ClientRepository clientRepository;
-    private final ClientValidationService clientValidationService;
+    private final ClientValidatorService clientValidationService;
 
     @Transactional
     public void createClient(ShortClientDto clientDto) {
@@ -26,7 +26,7 @@ public class ClientService {
 
     @Transactional
     public void updateClient(ClientDto clientDto) {
-        clientValidationService.ensureClientExistById(clientDto);
+        clientValidationService.ensureClientExistById(clientDto.getId());
         clientRepository.save(toEntity(clientDto));
     }
     @Transactional(readOnly = true)

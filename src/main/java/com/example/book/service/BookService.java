@@ -4,7 +4,7 @@ import com.example.book.dto.ShortBookDto;
 import com.example.book.dto.BookDto;
 import com.example.book.entity.Book;
 import com.example.book.repository.BookRepository;
-import com.example.book.validation.BookValidationService;
+import com.example.book.validation.BookValidatorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class BookService {
     private final BookRepository bookRepository;
-    private final BookValidationService bookValidationService;
+    private final BookValidatorService bookValidationService;
 
     @Transactional
     public void createBook(ShortBookDto bookDto) {
@@ -52,7 +52,7 @@ public class BookService {
                 .author(updateBookDto.getAuthor())
                 .build();
     }
-    private BookDto toBookDto(Book book){
+    public BookDto toBookDto(Book book){
         return BookDto.builder()
                 .id(book.getId())
                 .name(book.getName())
