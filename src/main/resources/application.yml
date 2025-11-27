@@ -2,7 +2,7 @@ spring:
   application:
     name: book
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/book
+    url: jdbc:postgresql://postgres:5432/book
     username: myuser
     password: mypassword
     driver-class-name: org.postgresql.Driver
