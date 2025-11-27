@@ -47,7 +47,7 @@ public class AdminController {
     }
 
     @PatchMapping("/client")
-    public ResponseEntity<String> updateBook(
+    public ResponseEntity<String> updateClient(
             @RequestBody @Valid ClientDto clientDto) {
         clientService.updateClient(clientDto);
         return ResponseEntity.ok("Клиент успешно обновлен");
