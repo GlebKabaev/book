@@ -1,7 +1,7 @@
 package com.example.book.controller;
 
+import com.example.book.dto.ShortBookDto;
 import com.example.book.dto.BookDto;
-import com.example.book.dto.UpdateBookDto;
 import com.example.book.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,14 +17,15 @@ public class AdminController {
 
     @PostMapping("/book")
     public ResponseEntity<String> createBook(
-            @RequestBody @Valid BookDto book) {
+            @RequestBody @Valid ShortBookDto book) {
         bookService.createBook(book);
         return ResponseEntity.ok("Книга успешно создана");
     }
     @PatchMapping("/book")
     public ResponseEntity<String> updateBook(
-            @RequestBody @Valid UpdateBookDto book) {
+            @RequestBody @Valid BookDto book) {
         bookService.updateBook(book);
         return ResponseEntity.ok("Книга успешно обновлена");
     }
+
 }

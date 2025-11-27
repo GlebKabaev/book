@@ -1,7 +1,7 @@
 package com.example.book.service;
 
+import com.example.book.dto.ShortBookDto;
 import com.example.book.dto.BookDto;
-import com.example.book.dto.UpdateBookDto;
 import com.example.book.entity.Book;
 import com.example.book.repository.BookRepository;
 import com.example.book.validation.BookValidationService;
@@ -18,18 +18,18 @@ public class BookService {
     private final BookValidationService bookValidationService;
 
     @Transactional
-    public void createBook(BookDto bookDto) {
+    public void createBook(ShortBookDto bookDto) {
         bookValidationService.ensureBookNotExist(bookDto);
         bookRepository.save(toEntity(bookDto));
     }
 
     @Transactional
-    public void updateBook(UpdateBookDto updateBookDto) {
+    public void updateBook(BookDto updateBookDto) {
         bookValidationService.ensureBookExistById(updateBookDto.getId());
         bookRepository.save(toEntity(updateBookDto));
     }
 
-    private Book toEntity(BookDto bookDto) {
+    private Book toEntity(ShortBookDto bookDto) {
         return Book.builder()
                 .id(UUID.randomUUID())
                 .isbn(bookDto.getIsbn())
@@ -38,7 +38,7 @@ public class BookService {
                 .build();
     }
 
-    private Book toEntity(UpdateBookDto updateBookDto) {
+    private Book toEntity(BookDto updateBookDto) {
         return Book.builder()
                 .id(updateBookDto.getId())
                 .isbn(updateBookDto.getIsbn())

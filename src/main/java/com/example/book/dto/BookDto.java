@@ -1,23 +1,16 @@
 package com.example.book.dto;
 
 import lombok.*;
-import lombok.experimental.SuperBuilder;
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
-import javax.validation.constraints.NotBlank;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
-public class BookDto {
-    @NotBlank
-    private String name;
-
-    @NotBlank
-    private String author;
-
-    @NotBlank
-    private String isbn;
-
+@ToString(callSuper = true)
+public class BookDto extends ShortBookDto {
+    @NotNull
+    @Getter
+    private UUID id;
 
 }
