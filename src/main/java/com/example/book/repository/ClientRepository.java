@@ -1,14 +1,11 @@
 package com.example.book.repository;
 
-import com.example.book.entity.Book;
+import com.example.book.entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.UUID;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, UUID> {
-
-    boolean existsBookByIsbn(String isbn);
+public interface ClientRepository extends JpaRepository<Client, UUID> {
 }

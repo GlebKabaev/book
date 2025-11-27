@@ -5,10 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
@@ -22,5 +22,17 @@ public class Client {
     @Column(name = "id", columnDefinition = "uuid")
     private UUID id;
 
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "second_name", nullable = false)
+    private String secondName;
+
+    @Column(name = "middle_name")
+    private String middleName;
+
+    @Column(name = "birth_date", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date birthDate;
 
 }
