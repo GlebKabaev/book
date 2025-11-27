@@ -52,6 +52,9 @@ public class AdminController {
         clientService.updateClient(clientDto);
         return ResponseEntity.ok("Клиент успешно обновлен");
     }
-
+    @GetMapping("/client")
+    public ResponseEntity<List<ClientDto>> findAllClients() {
+        return ResponseEntity.ok(clientService.findAllClients());
+    }
 
 }
