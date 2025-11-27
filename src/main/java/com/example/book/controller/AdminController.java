@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
@@ -21,11 +22,17 @@ public class AdminController {
         bookService.createBook(book);
         return ResponseEntity.ok("Книга успешно создана");
     }
+
     @PatchMapping("/book")
     public ResponseEntity<String> updateBook(
             @RequestBody @Valid BookDto book) {
         bookService.updateBook(book);
         return ResponseEntity.ok("Книга успешно обновлена");
+    }
+
+    @GetMapping("/book")
+    public ResponseEntity<List<BookDto>> findAllBooks() {
+        return ResponseEntity.ok(bookService.findAllBooks());
     }
 
 }

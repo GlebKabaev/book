@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder
+@SuperBuilder(toBuilder = true)
 public class ShortBookDto {
     @NotBlank
     private String name;
